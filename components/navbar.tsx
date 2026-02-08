@@ -1,8 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
-import { Menu, X } from 'lucide-react'
+import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 
@@ -22,6 +22,10 @@ export function Navbar() {
     { name: "About", href: "/about" },
     { name: "Contact", href: "#contact" },
   ]
+
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen((prev) => !prev)
+  }, [])
 
   return (
     <motion.nav
@@ -62,7 +66,7 @@ export function Navbar() {
         {/* Mobile Menu Toggle */}
         <button
           className="md:hidden relative z-50 text-white"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          onClick={toggleMobileMenu}
         >
           {isMobileMenuOpen ? <X /> : <Menu />}
         </button>
