@@ -1,6 +1,8 @@
 name: Regenerate pnpm lockfile
+
 permissions:
   contents: write
+
 on:
   workflow_dispatch:
 
